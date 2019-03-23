@@ -1,0 +1,13 @@
+{
+  "name": "toucan-vue",
+  "version": "0.0.1",
+  "description": "Vue wrapper for the Toucan AI client",
+  "main": "src/toucan-vue.vue",
+  "author": "Vishnu Menon",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^5.15.3",
+    "eslint-plugin-vue": "^5.2.2",
+    "vue": "^2.6.10"
+  }
+}
