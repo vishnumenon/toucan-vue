@@ -30,7 +30,9 @@ export default {
   props: [
     "id",
     "secret",
-    "tryToResume",
+    "tryToResume", // If true, try to resume an existing session on load, by checking cookies. Only takes effect if deployed is also true
+    "deployed", // When deployed is false, no session is created. When deployed is true, either a new session is created or an existing one is resumed
+    "loadConvo", // When non-null, load the provided convo ID and resume it. If deployed is true, this is ignored.
     "messageDelay", // in ms
     "onProductsSelected", // argument is an array of product objects
     "onProductClicked", // arguments are Product, Event. Return 'true' if the link should be followed after calling callback
@@ -40,7 +42,6 @@ export default {
     "accentColor", // Defaults to "247, 71, 6", Must be a comma-separated RGB triplet string!!
     "embeddedMode", // When in embedded mode, only the message log renders; no FAB etc
     "allowInput", // When false, don't show input
-    "loadConvo", // When non-null, load the provided convo ID and resume it
     "hidePreviews",
     "alreadyLoaded" // set to true on all but the first-loaded instance on a page
   ],
@@ -60,7 +61,7 @@ export default {
       options.onReady = t => {
         this.toucanInstance = t;
         if (this.onReady) {
-          this.onReady();
+          this.onReady(t);
         }
       };
       new ToucanAI(options);
