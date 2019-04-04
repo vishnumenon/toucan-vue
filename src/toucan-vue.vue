@@ -28,6 +28,8 @@ function loadScript(src, alreadyLoaded) {
 export default {
   name: "ToucanAIChat",
   props: [
+    "resourceRoot",
+    "serverURL",
     "id",
     "secret",
     "tryToResume", // If true, try to resume an existing session on load, by checking cookies. Only takes effect if deployed is also true
@@ -46,10 +48,9 @@ export default {
     "alreadyLoaded" // set to true on all but the first-loaded instance on a page
   ],
   mounted: function() {
-    loadScript(
-      "https://dev.toucanai.com:91/widget.js",
-      this.alreadyLoaded
-    ).then(() => {
+    let widgetUrl =
+      (this.resourceRoot || "https://dev.toucanai.com:91") + "/widget.js";
+    loadScript(widgetUrl, this.alreadyLoaded).then(() => {
       let options = Object.assign({}, this.$props);
       // Delete any undefined keys
       Object.keys(options).forEach(
