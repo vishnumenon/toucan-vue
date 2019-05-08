@@ -45,6 +45,7 @@ export default {
     "embeddedMode", // When in embedded mode, only the message log renders; no FAB etc
     "allowInput", // When false, don't show input
     "hidePreviews",
+    "windowTitle",
     "alreadyLoaded" // set to true on all but the first-loaded instance on a page
   ],
   mounted: function() {
